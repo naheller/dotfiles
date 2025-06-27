@@ -1,0 +1,42 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[brightness]
+# Sun unicode: 2600
+#label=brt:
+command=brightnessctl | grep -oP "\(\K[^\)]+" | sed 's/$/ brt/'
+interval=5
+
+[battery]
+#label=ba:
+command=awk '{print $1 "% bat"}' /sys/class/power_supply/BAT0/capacity
+#command=cat /sys/class/power_supply/BAT0/capacity
+interval=5
+color=#F4D6A4
+
+[discharge]
+short_text=dis
+command=awk '{printf "%.2fw dis\n", $1*10^-6}' /sys/class/power_supply/BAT0/power_now
+interval=5
+color=#F4D6A4
+
+[date]
+#command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%a %d %b'
+interval=30
+color=#A4C2F4
+
+[time]
+#command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%I:%M %p'
+interval=10
+color=#A4C2F4
