@@ -1,13 +1,21 @@
 {
     "layer": "top",
+    "spacing": 10,
+    "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock"],
+    "modules-right": ["network", "pulseaudio", "backlight", "battery", "clock"],
     "sway/window": {
 	 "max-length": 50
     },
+    "network": {
+	"interface": "wlan0",
+	"format": "net: {essid} ({signalStrength}%)",
+	"format-disconnected": "net: disconnected"
+    },
     "pulseaudio": {
-	"format": "vol: {volume}%"
+	"format": "vol: {volume}%",
+	"format-muted": "vol: muted"
     },
     "backlight": {
 	"format": "bright: {percent}%",
@@ -15,12 +23,10 @@
     "battery": {
 	"bat": "BAT0",
 	"states": {
-	    "good": 95,
-	    "warning": 30,
-	    "critical": 5
+	    "warning": 29,
+	    "critical": 9
 	},
 	"format": "batt: {capacity}%",
-	"format-charging": "batt: {capacity}% (charging)",
     },
     "clock": {
 	"format": "{:%a %d %b %I:%M %p}",
