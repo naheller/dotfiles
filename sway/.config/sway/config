@@ -37,9 +37,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 set $lock swaylock -f -c 1e1e1e
 
-exec swayidle -w \
-         before-sleep $lock \
-	 idlehint 1
+#exec swayidle -w \
+#         before-sleep $lock \
+#	 idlehint 1
 
 bindsym $mod+x exec $lock
 #
@@ -228,7 +228,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_command i3blocks
+    swaybar_command waybar
 
     colors {
         statusline #ffffff

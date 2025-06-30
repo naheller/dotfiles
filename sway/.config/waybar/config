@@ -1,0 +1,29 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "clock"],
+    "sway/window": {
+	 "max-length": 50
+    },
+    "pulseaudio": {
+	"format": "vol: {volume}%"
+    },
+    "backlight": {
+	"format": "bright: {percent}%",
+    },
+    "battery": {
+	"bat": "BAT0",
+	"states": {
+	    "good": 95,
+	    "warning": 30,
+	    "critical": 5
+	},
+	"format": "batt: {capacity}%",
+	"format-charging": "batt: {capacity}% (charging)",
+    },
+    "clock": {
+	"format": "{:%a %d %b %I:%M %p}",
+	"tooltip-format": "<tt><small>{calendar}</small></tt>"
+    }
+}
