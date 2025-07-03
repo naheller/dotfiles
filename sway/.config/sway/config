@@ -30,7 +30,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ### Screen lock config
 
 set $swaylockbg "~/Downloads/swaylock-bg.png"
-set $lock swaylock -f -i $swaylockbg
+set $lock swaylock -f -c 000000 --indicator-idle-visible
 bindsym $mod+x exec $lock
 
 ### Idle configuration
@@ -46,7 +46,7 @@ bindsym $mod+x exec $lock
 exec swayidle -w \
     timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
     timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' \
-    before-sleep "swaylock -f -i $swaylockbg"
+    before-sleep $lock
 
 ### Input configuration
 #
