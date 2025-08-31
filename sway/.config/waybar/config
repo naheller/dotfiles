@@ -1,15 +1,24 @@
 {
     "layer": "top",
-    "spacing": 10,
-    "height": 30,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["network", "pulseaudio", "backlight", "battery", "clock"],
+    "spacing": 15,
+    "height": 25,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["network", "pulseaudio", "backlight", "battery", "power-profiles-daemon",  "clock", "tray"],
     "sway/window": {
 	 "max-length": 50
     },
+    "power-profiles-daemon": {
+	    "format": "{icon}",
+	    "format-icons": {
+		    "default": "\uf24e",
+		    "performance": "\uf0e7",
+		    "balanced": "\uf24e",
+		    "power-saver": "\uf06c"
+	    }
+    },
     "network": {
-	"interface": "wlan0",
+	// "interface": "wlp0s20f3",
 	"format": "\uf1eb {essid} ({signalStrength}%)",
 	"format-disconnected": "\uf1eb disconnected"
     },
@@ -31,7 +40,7 @@
 	"format-icons": ["\uf243","\uf242", "\uf240"]
     },
     "clock": {
-	"format": "\uf017 {:%a %d %b %I:%M %p}",
+	"format": "\uf017 {:%a %m/%d %I:%M %p}",
 	"tooltip-format": "<tt><small>{calendar}</small></tt>"
     }
 }

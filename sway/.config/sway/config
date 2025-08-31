@@ -2,6 +2,9 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Temp for setting up polit on sway
+#exec lxpolkit
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,12 +17,13 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
-set $menu wmenu-run
+set $rofi-cmd rofi -terminal '$term'
+set $menu $rofi-cmd -show combi -combi-modes drun#run -modes combi
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -32,9 +36,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output DP-1 pos 0 0
 output eDP-1 pos 2560 1440
 
+# Fractional scaling
+output eDP-1 scale 1.25
+
 ### Screen lock config
 
-set $swaylockbg "~/Downloads/swaylock-bg.png"
+#set $swaylockbg "~/Downloads/swaylock-bg.png"
 set $lock swaylock -f -c 000000 --indicator-idle-visible
 bindsym $mod+x exec $lock
 
@@ -74,8 +81,11 @@ input 1133:16465:Logitech_M510 left_handed enabled
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
+    # Start a toolbox terminal
+    bindsym $mod+Return exec $term toolbox enter
+
+    # Start a host terminal
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -146,6 +156,9 @@ input 1133:16465:Logitech_M510 left_handed enabled
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Alt-tab between workspaces
+    bindsym $mod+Tab workspace back_and_forth
 #
 # Layout stuff:
 #
